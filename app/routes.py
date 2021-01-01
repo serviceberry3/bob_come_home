@@ -3,7 +3,7 @@
 #Flask knows what logic to execute when a client requests a given URL 
 
 #import the HTML template renderer. Jinja2 template engine subs {{ ... }} blocks with corresponding render_template() args
-from flask import render_template
+from flask import render_template, flash, redirect
 
 
 #import the Flask instance
