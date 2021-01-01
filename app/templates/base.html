@@ -8,8 +8,9 @@
     </head>
     <body>
         <div>BobComeHome: 
-            <a href="/index">Home</a>
-            <a href="/login">Login</a>
+            <!--can pass name of view fxn to url_for to get url-->
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
         </div>
         <hr>
 
