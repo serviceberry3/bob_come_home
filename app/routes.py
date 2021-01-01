@@ -9,6 +9,9 @@ from flask import render_template
 #import the Flask instance
 from app import app
 
+#import login form code
+from app.forms import LoginForm
+
 #decorators: these modify functions that follow it.
 #creates assocition between URL given as argument, and the function (like callbacks)
 #so the URLs / and /index will execute this fxn
