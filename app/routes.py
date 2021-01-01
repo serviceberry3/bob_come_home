@@ -11,10 +11,10 @@ from app.models import User
 from werkzeug.urls import url_parse
 
 #import the Flask instance
-from app import app
+from app import app, db
 
 #import login form code
-from app.forms import LoginForm
+from app.forms import LoginForm, RegistrationForm
 
 #decorators: these modify functions that follow it.
 #creates assocition between URL given as argument, and the function (like callbacks)
@@ -95,4 +95,31 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+#user registration view function
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    #make sure user that invokes this route is not logged in already, if they are just go to home page
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    #create new RegistrationForm()
+    form = RegistrationForm()
+
+    #originally returns false when browser sends GET rqst to receive the page with the form. So we get the template rendered
+    #When it returns true on the POST request, we need to do the following
+    if form.validate_on_submit():
+        #add the user to the db
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+
+        #display success message and go to login page
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+
+    #render register.html for user
+    return render_template('register.html', title='Register', form=form)
 
