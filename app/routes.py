@@ -20,11 +20,11 @@ def index():
     #fake posts to show (list of dicts)
     posts = [
         {
-            'author': {'username': 'Noah'}
+            'author': {'username': 'Noah'},
             'body': {'Beautiful day in Indy!'}
         },
         {
-            'author': {'username': 'Bob'}
+            'author': {'username': 'Bob'},
             'body': {'Hey, it\'s Bob! Rescue me from the warehouse!'}
         }
     ]
