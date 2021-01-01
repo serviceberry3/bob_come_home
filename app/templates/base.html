@@ -10,7 +10,11 @@
         <div>BobComeHome: 
             <!--can pass name of view fxn to url_for to get url-->
             <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
             <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
         <hr>
 
