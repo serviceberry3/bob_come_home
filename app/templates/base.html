@@ -12,6 +12,18 @@
             <a href="/login">Login</a>
         </div>
         <hr>
+
+        <!--render all previously flashed messages here-->
+        {% with message = get_flashed_mesages() %} <!--asisign result of get_flashed_messages() to a var-->
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
         {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
     </body>
 </html>

@@ -36,9 +36,25 @@ def index():
     return render_template('index.html', title='Home', user=user, posts=posts)
 
 
-@app.route('/login')
+#methods tells Fask that this view fxn accepts GET and POST requests (default is to accept only GET)
+#GET: requests that return info to client (in this case, the browser)
+#POST: requests used when broswer submits form data to server (GET can also be used for this, but not recommended)
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     #instantiate new LoginForm
     form = LoginForm()
+    
+    #validate/process the form. when browser sends GET rqst to receive the page w/the form, this will ret False,
+    #so we jump to render_template
+    #when browser sends POST rqst when user hits submit, this will gather all data, run attached validators, and ret True,
+    #flashes message to user and goes back to homepage
+    if form.validate_on_submit():
+        #Flask stores the message, but flashed msgs won't automatically appear, need to render them in HTML template
+        flash('Login requested for user {}, rembmer_me={}'.format(form.username.data, form.remember_me.data))
+
+        #return to homepage
+        return redirect('/index')
+
+    #render login.html for user
     return render_template('login.html', title='Sign In', form=form)
 
