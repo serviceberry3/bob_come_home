@@ -50,7 +50,7 @@ def login():
     #flashes message to user and goes back to homepage
     if form.validate_on_submit():
         #Flask stores the message, but flashed msgs won't automatically appear, need to render them in HTML template
-        flash('Login requested for user {}, rembmer_me={}'.format(form.username.data, form.remember_me.data))
+        flash('Login requested for user {}, remember_me = {}'.format(form.username.data, form.remember_me.data))
 
         #return to homepage
         return redirect('/index')
