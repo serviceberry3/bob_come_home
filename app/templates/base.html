@@ -1,0 +1,14 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - BobComeHome</title>
+        {% else %}
+        <title>Welcome to BobComeHome</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>BobComeHome: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
+    </body>
+</html>
