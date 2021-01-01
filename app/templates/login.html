@@ -11,11 +11,22 @@
         <!--the form fields from flask_wtf know how to render themselves as HTML-->
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            {{ form.username(size=32) }}<br> <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            
+            <!--render error messages in red if any available-->
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32) }}<br>
+
+            <!--render error messages in red if any available-->
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
