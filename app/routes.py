@@ -22,7 +22,6 @@ from app.forms import LoginForm, RegistrationForm
 @app.route('/')
 @app.route('/index')
 #login required to view this page, will redirect to login view fxn if not logged in
-#@login_required
 def index():
     #fake posts to show (list of dicts)
     posts = [
