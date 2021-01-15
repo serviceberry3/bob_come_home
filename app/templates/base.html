@@ -1,6 +1,5 @@
 <html style="background-color: blue;">
     <head>
-        <img src="img/bobstache.png" alt="Frenchie Bob" style="width:50px">
         {% if title %}
         <title>{{ title }} - BobComeHome</title>
         {% else %}
@@ -8,6 +7,9 @@
         {% endif %}
     </head>
     <body>
+        <div>
+            <img src="img/bobstache.png" alt="Frenchie Bob" style="width:50px">
+        </div>
         <div>BobComeHome: 
             <!--can pass name of view fxn to url_for to get url-->
             <a href="{{ url_for('index') }}">Home</a>
