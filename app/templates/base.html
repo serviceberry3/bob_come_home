@@ -1,0 +1,34 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - BobComeHome</title>
+        {% else %}
+        <title>Welcome to BobComeHome</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>BobComeHome: 
+            <!--can pass name of view fxn to url_for to get url-->
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
+            <a href="{{ url_for('login') }}">Login</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        <hr>
+
+        <!--render all previously flashed messages here-->
+        {% with messages = get_flashed_messages() %} <!--asisign result of get_flashed_messages() to a var-->
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
+    </body>
+</html>
