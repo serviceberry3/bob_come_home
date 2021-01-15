@@ -2,6 +2,8 @@
 #handlers for app routes are written as Python fxns, called view functions, which are mapped to one or more route URLs so
 #Flask knows what logic to execute when a client requests a given URL 
 
+#NOTE TO SELF: DO sudo supervisorctl reload to refresh site
+
 #import the HTML template renderer. Jinja2 template engine subs {{ ... }} blocks with corresponding render_template() args
 from flask import render_template, flash, redirect, request, url_for
 
@@ -22,6 +24,7 @@ from app.forms import LoginForm, RegistrationForm
 @app.route('/')
 @app.route('/index')
 #login required to view this page, will redirect to login view fxn if not logged in
+#@login_required
 def index():
     #fake posts to show (list of dicts)
     posts = [
@@ -39,7 +42,7 @@ def index():
     return render_template('index.html', title='Home', posts=posts)
 
 
-#methods tells Fask that this view fxn accepts GET and POST requests (default is to accept only GET)
+#methods tells Flask that this view fxn accepts GET and POST requests (default is to accept only GET)
 #GET: requests that return info to client (in this case, the browser)
 #POST: requests used when broswer submits form data to server (GET can also be used for this, but not recommended)
 @app.route('/login', methods=['GET', 'POST'])

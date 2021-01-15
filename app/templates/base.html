@@ -1,4 +1,4 @@
-<html>
+<html style="background-color: blue;">
     <head>
         {% if title %}
         <title>{{ title }} - BobComeHome</title>
@@ -16,6 +16,7 @@
             <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
         </div>
+        <!--this makes a vertical line-->
         <hr>
 
         <!--render all previously flashed messages here-->
