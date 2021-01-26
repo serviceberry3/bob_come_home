@@ -7,9 +7,7 @@
         {% endif %}
     </head>
     <body>
-        <div>
-            <img src="img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px">
-        </div>
+        
         <div>BobComeHome: 
             <!--can pass name of view fxn to url_for to get url-->
             <a href="{{ url_for('index') }}">Home</a>
@@ -32,6 +30,10 @@
         </ul>
         {% endif %}
         {% endwith %}
+
+        <div>
+            <img src="img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px">
+        </div>
 
         {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
     </body>
