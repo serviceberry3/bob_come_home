@@ -7,10 +7,10 @@
         {% endif %}
     </head>
     <body>
-        <div>
-            <image src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:50px"/>
+        <span>
+            <image src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:40px"/>
             <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
-        </div>
+        </span>
         <div>BobComeHome: 
             <!--can pass name of view fxn to url_for to get url-->
             <a href="{{ url_for('index') }}">Home</a>
