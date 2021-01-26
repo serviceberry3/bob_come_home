@@ -32,7 +32,7 @@
         {% endwith %}
 
         <div>
-            <img src="img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px">
+            <img src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:50px"/>
         </div>
 
         {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
