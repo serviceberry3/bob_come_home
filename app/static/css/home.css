@@ -1,0 +1,6 @@
+.nav-button {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    transition: all 0.4s;
+    transition-timing-function: ease-in-out;
+}
