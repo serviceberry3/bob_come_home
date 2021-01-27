@@ -1,0 +1,27 @@
+{
+  "name": "bobcomehome.com",
+  "version": "1.0.0",
+  "description": "An ode to Robert T. Builder",
+  "main": "tailwind.config.js",
+  "dependencies": {
+    "autoprefixer": "^10.2.3",
+    "bootstrap": "^5.0.0-beta1",
+    "postcss": "^8.2.4",
+    "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:tailwind": "tailwind build app/static/css/home.css -o app/static/css/home_out.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serviceberry3/bob_come_home.git"
+  },
+  "author": "Noah Weiner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serviceberry3/bob_come_home/issues"
+  },
+  "homepage": "https://github.com/serviceberry3/bob_come_home#readme"
+}

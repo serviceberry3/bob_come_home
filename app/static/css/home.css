@@ -1,6 +1,31 @@
+@tailwind base;
+
+@tailwind components;
+
+/*tailwind-inheriting code here*/
+
+@tailwind utilities;
+
 .nav-button {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     transition: all 0.4s;
     transition-timing-function: ease-in-out;
 }
+
+.grid-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1.9fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Header"
+      "Content";
+  }
+
+
+  .Header { grid-area: Header; }
+
+
+  .Content { grid-area: Content; }

@@ -1,52 +1,75 @@
+
 <html>
     <head>
+        <!--
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">-->
+
         {% if title %}
         <title>{{ title }} - BobComeHome</title>
         {% else %}
         <title>Welcome to BobComeHome</title>
         {% endif %}
 
+        <link href="{{url_for('static', filename='css/home_out.css')}}" type="text/css" rel="stylesheet">
         <link href="{{url_for('static', filename='css/home.css')}}" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <div style="display:inline">
-            <image src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:40px"/>
-            <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
+
+        <div class="grid-container">
+            <div class="Header bg-gray-500 flex items-center">
+
+                <div style="display:inline" class="pb-2">
+                    <img src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:60px"
+                    class="pl-4 pt-4"/>
+                    <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
+                </div>
+                <div style="display:inline">
+                    <!--can pass name of view fxn to url_for to get url-->
+                    <div class="">
+                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <a href="{{ url_for('index') }}">Home</a>
+                        </span>
+                        
+                        {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
+                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <a href="{{ url_for('login') }}">Login</a>
+                        </span>
+                        
+            
+                        {% else %}
+                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <a href="{{ url_for('logout') }}">Logout</a>
+                        </span>
+                        
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!--this makes a vertical line-->
+            <hr>
+
+
+            <div class="Content bg-yellow-300">
+
+                <!--render all previously flashed messages here-->
+                {% with messages = get_flashed_messages() %} <!--asisign result of get_flashed_messages() to a var-->
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+
+                {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
+
+            </div>
         </div>
-        <div style="display:inline">
-            <!--can pass name of view fxn to url_for to get url-->
-            <span class="nav-button">
-                <a href="{{ url_for('index') }}">Home</a>
-            </span>
-            
-            {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
-            <span class="nav-button">
-                <a href="{{ url_for('login') }}">Login</a>
-            </span>
-            
-
-            {% else %}
-            <span class="nav-button">
-                <a href="{{ url_for('logout') }}">Logout</a>
-            </span>
-            
-            {% endif %}
-        </div>
-
-        <!--this makes a vertical line-->
-        <hr>
-
-        <!--render all previously flashed messages here-->
-        {% with messages = get_flashed_messages() %} <!--asisign result of get_flashed_messages() to a var-->
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-
-        {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
+        
     </body>
 </html>
