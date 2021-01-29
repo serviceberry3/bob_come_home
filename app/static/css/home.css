@@ -6,11 +6,26 @@
 
 @tailwind utilities;
 
+@font-face {
+    font-family: "chunk-five";
+    src: url(../fonts/chunkfive/Chunk\ Five\ Print.otf) format('opentype');
+}
+
 .nav-button {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     transition: all 0.4s;
     transition-timing-function: ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: rgba(146, 64, 14, 1);
+    transform: scale(1.1) translateY(-4px);
+  }
+  
+.nav-button:active {
+  background-color: rgba(16, 185, 129, 1);
+  transition: none;
 }
 
 .grid-container {
@@ -24,8 +39,12 @@
       "Content";
   }
 
+.Header { grid-area: Header; }
 
-  .Header { grid-area: Header; }
+.Header h1 {
+    font-family: "chunk-five";
+    font-size: 3.8rem;
+}
 
 
-  .Content { grid-area: Content; }
+.Content { grid-area: Content; }

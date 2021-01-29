@@ -125,3 +125,7 @@ def register():
     #render register.html for user
     return render_template('register.html', title='Register', form=form)
 
+@app.route('/memories')
+def memories():
+    return render_template('memories.html')
+

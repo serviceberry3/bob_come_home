@@ -6,12 +6,18 @@
 
     <div class="ml-10 mt-10">
 
+        {% if not current_user.is_anonymous %}
         <h1 class="font-black text-6xl">Hello, {{ current_user.username }}! Long live Bob.</h1>
+
+        {% else %}
+        <h1 class="font-black text-6xl">Hello! Long live Bob.</h1>
+
+        {% endif %}
+
         <br><br>
 
 
-
-        <h1 class="text-5xl">Posts about the beloved Bob</h1>
+        <h1 class="text-5xl">Posts about the beloved Bob:</h1>
         <br>
 
         {% for post in posts %}

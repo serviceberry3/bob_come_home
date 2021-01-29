@@ -19,30 +19,50 @@
         <div class="grid-container">
             <div class="Header bg-gray-500 flex items-center">
 
-                <div style="display:inline" class="pb-2">
+                <div style="display:inline-block" class="pb-2">
                     <img src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:60px"
                     class="pl-4 pt-4"/>
                     <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
                 </div>
-                <div style="display:inline">
+
+                <!--website title-->
+                <h1 class="pl-4">In Memoriam: Robert T. Builder</h1>
+
+                <!--nav buttons-->
+                <div>
                     <!--can pass name of view fxn to url_for to get url-->
-                    <div class="">
-                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
-                            <a href="{{ url_for('index') }}">Home</a>
+                    <div class="pt-10">
+                        <span class="inline-block nav-button ml-10 font-semibold group px-1 pt-3 pb-1 
+                        rounded-md text-white uppercase bg-blue-600 mb-10">
+                            <div class="pb-2 px-2">
+                                <a class="" href="{{ url_for('index') }}">Home</a>
+                            </div>
                         </span>
                         
                         {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
-                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
-                            <a href="{{ url_for('login') }}">Login</a>
+                        <span class="inline-block nav-button ml-10 font-semibold group px-1 pt-3 pb-1 
+                        rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <div class="pb-2 px-2">
+                                <a href="{{ url_for('login') }}">Login</a>
+                            </div>
                         </span>
                         
             
                         {% else %}
-                        <span class="nav-button ml-10 font-semibold group px-1 pt-3 pb-1 rounded-md text-white uppercase bg-blue-600 mb-12">
-                            <a href="{{ url_for('logout') }}">Logout</a>
+                        <span class="inline-block nav-button ml-10 font-semibold group px-1 pt-3 pb-1 
+                        rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <div class="pb-2 px-2">
+                                <a href="{{ url_for('logout') }}">Logout</a>
+                            </div>
                         </span>
                         
                         {% endif %}
+                        <span class="inline-block nav-button ml-10 font-semibold group px-1 pt-3 pb-1 
+                        rounded-md text-white uppercase bg-blue-600 mb-12">
+                            <div class="pb-2 px-2">
+                                <a href="{{ url_for('memories') }}">Memories</a>
+                            </div>
+                        </span>
 
                     </div>
                 </div>
