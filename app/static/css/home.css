@@ -11,11 +11,42 @@
     src: url(../fonts/chunkfive/Chunk\ Five\ Print.otf) format('opentype');
 }
 
+@font-face {
+  font-family: "sudegnak";
+  src: url(../fonts/sudegnak/sudegnak.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "lemon-milk";
+  src: url(../fonts/lemon-milk/LemonMilk.otf) format('opentype');
+}
+
+@font-face {
+  font-family: "orange-juice";
+  src: url(../fonts/orange-juice/orange\ juice\ 2.0.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "sublack";
+  src: url(../fonts/sublack/SublackDemoRegular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: "shiny-unicorn";
+  src: url(../fonts/shiny-unicorn/Shiny\ Unicorn.otf) format('opentype');
+}
+
 .nav-button {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     transition: all 0.4s;
     transition-timing-function: ease-in-out;
+    @apply bg-purple-600;
+    font-family: "sudegnak", sans-serif;
+    font-size: 2rem;
+    width: 100px;
+    text-align: center;
+    border-color: black;
+    border-style: dashed;
+    border-width: 2px;
 }
 
 .nav-button:hover {
@@ -48,3 +79,16 @@
 
 
 .Content { grid-area: Content; }
+
+.bob-stache {
+  opacity: 1;
+}
+
+.bob-stache:hover {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+/*TODO*/
+.bob-stache:active {
+}

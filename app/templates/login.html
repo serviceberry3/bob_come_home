@@ -1,35 +1,67 @@
 <!--basically we're saying "use base.html, and replace 'content' block with what's defined here"-->
 {% extends "base.html" %}
 
+
 {% block content %}
-    <h1>Sign In</h1>
+    <link href="{{url_for('static', filename='css/login.css')}}" type="text/css" rel="stylesheet">
+    <h1 class="ml-10 mt-10 text-4xl login-form-head">Hello, friend. Sign in to open up a whole world of Bob!</h1>
+    <br>
     <!--action tells browser the URL that should be used when submitting the form. When empty, submits to current URL-->
     <!--method is HTTP request method that should be used when submitting form to server-->
     <!--novalidate used to tell browser to not apply validation to fields in this form, leaving it to Flask app-->
-    <form action="" method="post" novalidate>
+    <form class="ml-10" action="" method="post" novalidate>
         {{ form.hidden_tag() }} <!--hidden_tag() generates hidden field that incl token used to protect form against CSRF attax-->
         <!--the form fields from flask_wtf know how to render themselves as HTML-->
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br> <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            <div class="text-xl login-label">
+                {{ form.username.label }}
+            </div>
+
+            <div class="">
+                {{ form.username(size=32) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            </div>
             
+
             <!--render error messages in red if any available-->
             {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
-
         </p>
+        <br>
+
         <p>
-            {{ form.password.label }}<br>
+            <div class="text-xl login-label">
+                {{ form.password.label }}
+            </div>
+
+
             {{ form.password(size=32) }}<br>
 
             <!--render error messages in red if any available-->
             {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
+
+
+        <p>
+            <div class="remember-label">
+                {{ form.remember_me() }} 
+                {{ form.remember_me.label }}
+            </div>
+        </p>
+
+        <br>
+        <p>
+            <div>
+                {{ form.submit(class_="submit-button") }}
+            </div>
+        </p>
+
     </form>
-    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+
+    <p class="ml-10 reg-blurb text-4xl">
+        Mourning/meeting Bob for the first time? <a id="register-link" href="{{ url_for('register') }}">Click to register!</a>
+    </p>
+
 {% endblock %}

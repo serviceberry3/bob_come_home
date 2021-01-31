@@ -1,37 +1,90 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Register</h1>
-    <form action="" method="post">
+    <link href="{{url_for('static', filename='css/register.css')}}" type="text/css" rel="stylesheet">
+    <h1 class="ml-10 mt-10 text-4xl login-form-head">Register</h1>
+    <br>
+    <form class="ml-10" action="" method="post">
         {{ form.hidden_tag() }}
+
+        <!--username section-->
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            <div class="text-xl login-label">
+                {{ form.username.label }}
+            </div>
+
+            <div class="">
+                {{ form.username(size=32) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            </div>
+            
+
+            <!--render error messages in red if any available-->
             {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
+
+
+        <!--email section-->
         <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
+            <div class="text-xl login-label">
+                {{ form.email.label }}
+            </div>
+
+            <div class="">
+                {{ form.email(size=64) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            </div>
+            
+
+            <!--render error messages in red if any available-->
             {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
+
+        <!--password section-->
         <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+            <div class="text-xl login-label">
+                {{ form.password.label }}
+            </div>
+
+            <div class="">
+                {{ form.password(size=32) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            </div>
+            
+
+            <!--render error messages in red if any available-->
             {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
+
+        <!--password second entry section-->
         <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
+            <div class="text-xl login-label">
+                {{ form.password2.label }}
+            </div>
+
+            <div class="">
+                {{ form.password2(size=32) }} <!--size is an HTML attribute that will be added when <input> tag is generated-->
+            </div>
+            
+
+            <!--render error messages in red if any available-->
             {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+                <span class="font-mono text-red-500">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <br>
+
+        <!--submit button-->
+        <p>
+            <div>
+                {{ form.submit(class_="submit-button") }}
+            </div>
+        </p>
     </form>
 {% endblock %}

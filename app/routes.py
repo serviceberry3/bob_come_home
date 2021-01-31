@@ -12,6 +12,8 @@ from app.models import User
 
 from werkzeug.urls import url_parse
 
+import os
+
 #import the Flask instance
 from app import app, db
 
@@ -66,7 +68,7 @@ def login():
 
         #if user not in db or wrong password, flash error message and load login page again
         if user is None or not user.check_password(form.password.data): #take passwd hash stored w/user and determine if passwd entered matches
-            flash('Invalid username or password')
+            flash('ERROR: Invalid username or password')
             return redirect(url_for('login'))
 
         
@@ -80,7 +82,6 @@ def login():
         #if there was no access denial redirection in the first place, or if the next arg is a full URL (malicious), go back to homepage
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
-
 
 
         #Flask stores the message, but flashed msgs won't automatically appear, need to render them in HTML template
@@ -127,5 +128,7 @@ def register():
 
 @app.route('/memories')
 def memories():
-    return render_template('memories.html')
+    bobs = os.listdir(os.path.join(app.static_folder, 'img', 'bob_mems'))
+    bobs = ['img/bob_mems/' + file for file in bobs]
+    return render_template('memories.html', bobs = bobs)
 

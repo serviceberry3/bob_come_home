@@ -19,7 +19,7 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
 
     #make sure this password matches first
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField('Enter password again', validators=[DataRequired(), EqualTo('password')])
 
 
     submit = SubmitField('Register')
@@ -28,11 +28,11 @@ class RegistrationForm(FlaskForm):
     # When you add any methods that match pattern validate_<field_name>, WTForms invokes them in addition to stock validators. 
 
     def validate_username(self, username):
-        #query the db for this username
+        #query the db for this username to make sure this user doesn't already exist
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             #add this message to the errors for username field
-            raise ValidationError('Please use a different username.')
+            raise ValidationError('User already exists. Please use a different username.')
 
 
     def validate_email(self, email):
@@ -40,4 +40,4 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             #add this message to the errors for email field
-            raise ValidationError('Please use a different email address.')
+            raise ValidationError('User with this email already exists. Please use a different email address.')

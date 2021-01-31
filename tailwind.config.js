@@ -14,6 +14,7 @@ module.exports = {
     scale: ['responsive', 'hover', 'focus', 'active'],
     borderColor: ['responsive', 'hover', 'focus', 'active'],
     fill: ['responsive', 'hover', 'focus', 'active'],
+    opacity: ['responsive', 'hover', 'focus', 'active'],
 
     extend: {},
   },

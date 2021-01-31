@@ -1,0 +1,12 @@
+h1 {
+    font-family: "lemon-milk", sans-serif;
+}
+
+.bob-img {
+    width: 200px;
+    margin: 20px;
+}
+
+.bob-img:hover {
+    opacity: 0.4;
+}

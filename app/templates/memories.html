@@ -3,8 +3,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    <link href="{{url_for('static', filename='css/memories.css')}}" type="text/css" rel="stylesheet">
+    <h1 class="ml-10 mt-10 text-8xl">Good times.</h1>
     <div class="ml-10 mt-10">
-        Under construction.
+       Under construction.
+       {% for bob_group in bobs | batch(5) %}
+            <div class="flex items-center">
+                {% for bob in bob_group %}
+                    <img class="bob-img" src="{{url_for('static', filename=bob)}}" alt="{{bob}}">
+                {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
