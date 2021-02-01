@@ -11,12 +11,16 @@
                 {% for bob in bob_group %}
                     <!--check if this is a video-->
                     {% if bob[-3:]=="mp4" or bob[-3:]=="mov" %}
-                        <video class="bob-img" controls>
-                            <source src="{{url_for('static', filename=bob)}}" type="video/mp4">
-                            Your browser does not support HTML video.
-                        </video>
+                        <div class="temp-img-hover">
+                            <video class="bob-img" controls>
+                                <source src="{{url_for('static', filename=bob)}}" type="video/mp4">
+                                Your browser does not support HTML video.
+                            </video>
+                        </div>
                     {% else %}
-                        <img id=bob onclick="openFullscreen(this);" class="bob-img" src="{{url_for('static', filename=bob)}}" alt="{{bob}}">
+                        <div class="temp-img-hover">
+                            <img id=bob onclick="openFullscreen(this);" class="bob-img" src="{{url_for('static', filename=bob)}}" alt="{{bob}}">
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>

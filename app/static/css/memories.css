@@ -7,6 +7,15 @@ h1 {
     margin: 20px;
 }
 
-.bob-img:hover {
+.temp-img-hover img:hover, .temp-img-hover video:hover {
     opacity: 0.4;
 }
+
+.temp-img-hover video:focus {
+    display: none;
+}
+
+/*
+img:not(.no-hover):hover { only apply hover styling when the div does not have the class 'no-hover'
+    opacity: 0.4;
+}*/

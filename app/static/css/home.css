@@ -114,3 +114,11 @@ footer {
 footer a:hover {
   color: white;
 }
+
+footer a#nweiner:active {
+  color: rgba(6, 78, 59, var(--tw-text-opacity));
+}
+
+footer a#source:active {
+  color: rgba(30, 58, 138, var(--tw-text-opacity));
+}

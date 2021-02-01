@@ -1,7 +1,8 @@
 //console.log("Testing memories.js");
 
+let img_of_interest = null;
+
 function openFullscreen(elem) {
-  console.log("called");
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } 
@@ -11,7 +12,52 @@ function openFullscreen(elem) {
   else if (elem.msRequestFullscreen) {
     elem.msRequestFullscreen();
   }
+
+  //rm img hover class to avoid the hover effect during fullscreen
+
+  //ONE OPTION
+  elem.parentElement.classList.remove('temp-img-hover');
+
+  //keep track of which image was made full screen so that we can add hover effect upon exiting full screen
+  img_of_interest = elem;
+
+  //another option
+  //elem.classList.add('no-hover');
 }
+
+//listen for exiting fullscreen
+document.addEventListener("fullscreenchange", function () {
+  console.log(document.fullscreen);
+  console.log(document.fullscreenElement);
+  if (!document.fullscreen)
+    img_of_interest.parentElement.classList.add('temp-img-hover');
+  else {
+    img_of_interest = document.fullscreenElement;
+    img_of_interest.parentElement.classList.remove('temp-img-hover');
+  }
+}, false);
+
+document.addEventListener("mozfullscreenchange", function () {
+  console.log(document.mozFullScreen);
+  console.log(document.fullscreenElement);
+  if (!document.mozFullScreen)
+    img_of_interest.parentElement.classList.add('temp-img-hover');
+  else {
+    img_of_interest = document.fullscreenElement;
+    img_of_interest.parentElement.classList.remove('temp-img-hover');
+  }
+}, false);
+
+document.addEventListener("webkitfullscreenchange", function () {
+  console.log(document.webkitIsFullScreen);
+  console.log(document.fullscreenElement);
+  if (!document.webkitIsFullScreen)
+    img_of_interest.parentElement.classList.add('temp-img-hover');
+  else {
+    img_of_interest = document.fullscreenElement;
+    img_of_interest.parentElement.classList.remove('temp-img-hover');
+  }
+}, false);
 
 /*
 $('img[data-enlargeable]').addClass('img-enlargeable').click(function(){
