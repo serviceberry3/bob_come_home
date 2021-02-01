@@ -6,13 +6,24 @@
     <link href="{{url_for('static', filename='css/memories.css')}}" type="text/css" rel="stylesheet">
     <h1 class="ml-10 mt-10 text-8xl">Good times.</h1>
     <div class="ml-10 mt-10">
-       Under construction.
        {% for bob_group in bobs | batch(5) %}
-            <div class="flex items-center">
+            <div class="flex justify-center">
                 {% for bob in bob_group %}
-                    <img class="bob-img" src="{{url_for('static', filename=bob)}}" alt="{{bob}}">
+                    <!--check if this is a video-->
+                    {% if bob[-3:]=="mp4" or bob[-3:]=="mov" %}
+                        <video class="bob-img" controls>
+                            <source src="{{url_for('static', filename=bob)}}" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    {% else %}
+                        <img id=bob onclick="openFullscreen(this);" class="bob-img" src="{{url_for('static', filename=bob)}}" alt="{{bob}}">
+                    {% endif %}
                 {% endfor %}
             </div>
         {% endfor %}
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/memories.js') }}"></script>
 {% endblock %}

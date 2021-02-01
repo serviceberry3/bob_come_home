@@ -127,6 +127,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/memories')
+@login_required
 def memories():
     bobs = os.listdir(os.path.join(app.static_folder, 'img', 'bob_mems'))
     bobs = ['img/bob_mems/' + file for file in bobs]

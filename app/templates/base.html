@@ -15,90 +15,95 @@
         <link href="{{url_for('static', filename='css/home.css')}}" type="text/css" rel="stylesheet">
     </head>
     <body>
+        <main>
+            <div class="grid-container">
+                <div class="Header bg-gray-500 flex items-center">
 
-        <div class="grid-container">
-            <div class="Header bg-gray-500 flex items-center">
-
-                <div style="display:inline-block" class="pb-2 bob-stache">
-                    <a class="" href="{{ url_for('index') }}">
-                        <img src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:80px"
-                        class="pl-4 pt-4"/>
-                    </a>
-                    <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
-                </div>
-
-                <!--website title-->
-                <h1 class="pl-4 select-none">In Memoriam: Robert T. Builder</h1>
-
-                <!--nav buttons-->
-                <div>
-                    <!--can pass name of view fxn to url_for to get url-->
-                    <div class="">
-                        <span class="inline-block nav-button ml-6 font-semibold group
-                        rounded-md text-white uppercase">
-                            <div class="pt-1">
-                                <a class="" href="{{ url_for('index') }}">Home</a>
-                            </div>
-                        </span>
-                        
-                        {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
-                        <span class="inline-block nav-button ml-6 font-semibold group
-                        rounded-md text-white uppercase">
-                            <div class="pt-1">
-                                <a href="{{ url_for('login') }}">Login</a>
-                            </div>
-                        </span>
-                        
-            
-                        {% else %}
-                        <span class="inline-block nav-button ml-6 font-semibold group
-                        rounded-md text-white uppercase">
-                            <div class="pt-1">
-                                <a href="{{ url_for('logout') }}">Logout</a>
-                            </div>
-                        </span>
-                        
-                        {% endif %}
-                        <span class="inline-block nav-button ml-6 font-semibold group
-                        rounded-md text-white uppercase bg-blue-600">
-                            <div class="pt-1 ">
-                                <a href="{{ url_for('memories') }}">Memories</a>
-                            </div>
-                        </span>
-
+                    <div style="display:inline-block" class="pb-2 bob-stache">
+                        <a class="" href="{{ url_for('index') }}">
+                            <img src="{{url_for('static', filename='img/bob_stache_cut.png')}}" alt="Frenchie Bob" style="width:80px"
+                            class="pl-4 pt-4"/>
+                        </a>
+                        <!--<img src="/home/vagrant/bob_come_home/app/static/img/bob_stache_cut.png" alt="Frenchie Bob" style="width:50px"/>-->
                     </div>
+
+                    <!--website title-->
+                    <h1 class="pl-4 select-none">In Memoriam: Robert T. Builder</h1>
+
+                    <!--nav buttons-->
+                    <div>
+                        <!--can pass name of view fxn to url_for to get url-->
+                        <div class="">
+                            <span class="inline-block nav-button ml-6 font-semibold group
+                            rounded-md text-white uppercase">
+                                <div class="pt-1">
+                                    <a class="" href="{{ url_for('index') }}">Home</a>
+                                </div>
+                            </span>
+                            
+                            {% if current_user.is_anonymous %} <!--true only when user is not logged in-->
+                            <span class="inline-block nav-button ml-6 font-semibold group
+                            rounded-md text-white uppercase">
+                                <div class="pt-1">
+                                    <a href="{{ url_for('login') }}">Login</a>
+                                </div>
+                            </span>
+                            
+                
+                            {% else %}
+                            <span class="inline-block nav-button ml-6 font-semibold group
+                            rounded-md text-white uppercase">
+                                <div class="pt-1">
+                                    <a href="{{ url_for('logout') }}">Logout</a>
+                                </div>
+                            </span>
+                            
+                            {% endif %}
+                            <span class="inline-block nav-button ml-6 font-semibold group
+                            rounded-md text-white uppercase bg-blue-600">
+                                <div class="pt-1 ">
+                                    <a href="{{ url_for('memories') }}">Mems</a>
+                                </div>
+                            </span>
+
+                        </div>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <!--this makes a vertical line-->
-            <hr>
+                <!--this makes a vertical line-->
+                <hr>
 
 
-            <div class="Content bg-yellow-300">
+                <div class="Content bg-yellow-300">
 
-                <!--render all previously flashed messages here-->
-                {% with messages = get_flashed_messages() %} <!--assign result of get_flashed_messages() to a var-->
+                    <!--render all previously flashed messages here-->
+                    {% with messages = get_flashed_messages() %} <!--assign result of get_flashed_messages() to a var-->
 
-                    <!--if there are some flashed messages-->
-                    {% if messages %}
-                    <ul class="ml-10 mt-10 text-red-500 font-mono">
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+                        <!--if there are some flashed messages-->
+                        {% if messages %}
+                        <ul class="ml-10 mt-10 text-red-500 font-mono">
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
 
-                {% endwith %}
+                    {% endwith %}
 
-                <!--insert 'content' block here-->
-                {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
-                <div class="credits ml-10">
-                    Site developed and maintained by <a class="text-green-600" href="https://serviceberry3.github.io/">Noah Weiner</a>. <a class="text-blue-600" href="https://github.com/serviceberry3/bob_come_home">Source.</a>
+                    <div class="place-self-center mb-10">
+                        <!--insert 'content' block here-->
+                        {% block content %}{% endblock %} <!--define where this template should insert 'content' block-->
+                    </div>
+
                 </div>
+                <footer class="select-none text-yellow-200">
+                    Site developed and maintained by <a class="text-green-900" href="https://serviceberry3.github.io/">Noah Weiner.</a> 
+                    <a class="text-blue-900" href="https://github.com/serviceberry3/bob_come_home">Source.</a>
+                </footer>
             </div>
-
-        </div>
-        
+        </main>
+        {% block scripts %}{% endblock %}
     </body>
+    
 </html>
