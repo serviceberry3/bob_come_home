@@ -4,4 +4,4 @@ Welcome! This is a Flask site served by nginx->gunicorn on a vagrant VM running 
 * hereliesbob.com
 
 # UPDATES #
-* 09/08/21: The site is now up at ![bobthebuildr.co.uk](http://www.bobthebuildr.co.uk). Must be connected to YaleSecure network to access it, for now. Use Firefox or Chrome.
+* 09/08/21: The site is now up at [bobthebuildr.co.uk](http://www.bobthebuildr.co.uk). Must be connected to YaleSecure network to access it, for now. Use Firefox or Chrome.
