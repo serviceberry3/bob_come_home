@@ -6,6 +6,7 @@ from flask_login import LoginManager
 
 #create application obj as instance of class Flask
 app = Flask(__name__) #name var is predefined, set to name of module in which it's used, used to load template files etc.
+app.secret_key = 'you-will-never-guess'
 
 #tell flask to read and apply config file
 app.config.from_object(Config)

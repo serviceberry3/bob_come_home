@@ -1,5 +1,5 @@
 app/static/img/bob_mems
 node_modules
 certs
-
+.env
 app.db
