@@ -8,7 +8,7 @@
 from flask import render_template, flash, redirect, request, url_for
 
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Post
 
 from werkzeug.urls import url_parse
 
@@ -29,20 +29,8 @@ from app.forms import LoginForm, RegistrationForm
 #@login_required
 def index():
     #fake posts to show (list of dicts)
-    posts = [
-        {
-            'author': {'username': 'Noah'},
-            'body': 'Beautiful day in Indy!'
-        },
-        {
-            'author': {'username': 'Bob'},
-            'body': 'Hey, it\'s Bob! Rescue me from the warehouse!'
-        }
-    ]
-
-
+    posts = Post.query.all()
     return render_template('index.html', title='Home', posts=posts)
-
 
 #methods tells Flask that this view fxn accepts GET and POST requests (default is to accept only GET)
 #GET: requests that return info to client (in this case, the browser)

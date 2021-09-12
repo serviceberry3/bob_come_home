@@ -4,3 +4,4 @@ certs
 .env
 app.db
 venv
+logs
