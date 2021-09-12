@@ -4,4 +4,4 @@ Welcome! This is a Flask site served by nginx->gunicorn on a vagrant VM running 
 * hereliesbob.com
 
 # UPDATES #
-* 09/08/21: The site is now up at [bobthebuildr.co.uk:8080](http://www.bobthebuildr.co.uk:8080). Must be connected to YaleSecure network to access it, for now. Use Firefox or Chrome.
+* 09/08/21: The site is now up at [bobthebuildr.co.uk:8080](http://www.bobthebuildr.co.uk:8080). Must be connected to YaleSecure network to access it, for now. Use Firefox or Chrome. Server hours: approx 10:30a-22:30p, M-F.
